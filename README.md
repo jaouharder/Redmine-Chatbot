@@ -29,7 +29,7 @@ here's exemples of what she can do :
 + To view details about a projet || *show project* ProjectName
 
 5.Update an existing project(If user is an admin)
-+ *i want to update a project*
++ *I want to update a project*
 
 6.Create new issues (requires admin privilege)
 + *create* IssueName * in project* ProjectName
