@@ -52,7 +52,7 @@ here's exemples of what she can do :
 ### How to install
 
 + Download or clone this repository 
-+ Cut and paste or extract Redmine-Chatbot-master folder COMPONANTS (examples, bin and plugins) in *xatkit-director*/build (allow to replace) 
++ Cut and paste or extract Redmine-Chatbot-master folder COMPONANTS (examples, bin and plugins) in *xatkit-directory*/build (allow to replace) 
 
 ### Quick start
 To start the chatbot :
