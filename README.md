@@ -50,15 +50,9 @@ here's exemples of what she can do :
 
 ### How to install
 
-+ Open Git Bash and change the current working directory to the xatkit directory
++ Download or clone this repository 
++ Cut and paste or extract Redmine-Chatbot folder COMPONANTS (examples, bin and plugins) in *xatkit-director*/build (allow to replace) 
 
-+ type
-```html
-    cd build/
-
-    git clone https://github.com/jaouharder/Redmine-Chatbot.git
-
-```
 ### Quick start
 To start the chatbot :
 
