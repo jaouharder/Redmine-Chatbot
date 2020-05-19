@@ -56,7 +56,7 @@ here's examples of what she can do :
 
 ### Quick start
 To start the chatbot :
-**for windows 
+***for windows*** 
 
 Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
@@ -65,7 +65,7 @@ Open Git Bash as administrator and change the current working directory to xatki
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
 ```
-**for Ubuntu
+***for Ubuntu***
 
 Navigate to ```xatkit/build``` directory and type :
 
