@@ -1,1 +1,92 @@
-# Redmine-Chatbot-
+# Redmine Chatbot
+
+### Table of Contents
+ 
+- [Description](#description)
+- [Requirements](#Requirements)
+- [How to install](#How-to-install)
+- [Quick start](#Quick-start)
+- [Authors information](#Authors-information)
+
+---
+
+## Description
+
+This chatbot is made using Xatkit bot platform, in this chatbot we can interact with redmine project management using there java based API 
+here's exemples of what she can do :
+1.Creating an account or login using API ACCESS KEY
+
+2.View all or spicific users (requires admin privilege)
++ To view all of them || *view all users*
++ To view details about an issue || *show* HisFirstName HisLastName *details*
+
+3.Create new projects (requires admin privilege)
++ *create project*
+
+4.View all or spicific projects
++ To view all of them || *show all projects*
++ To view details about a projet || *show project* ProjectName
+
+5.Update an existing project(If user is an admin)
++ *i want to update a project*
+
+6.Create new issues (requires admin privilege)
++ *create* IssueName * in project* ProjectName
+
+7.View all or spicific issues
++ To view all of them || *show all* ProjectName *issues*
++ To view details about an issue || *show issue id = * IssueID *details*
+
+8.Update an existing issue (requires admin privilege)
++ *On issue id=* IssueID *update* WhatToUpdate *:* UpdatedValue
++ WhatToUpdate can be *privacy*, *estimated_hours*, *tracker*, *tracker* or *priority*
+
+## Installation
+
+### Requirements
+
++ [Xatkit](https://github.com/xatkit-bot-platform/xatkit/wiki/Build-Xatkit)
+
+
+### How to install
+
++ Open Git Bash and change the current working directory to the xatkit directory
+
++ type
+```html
+    cd build/
+
+    git clone https://github.com/jaouharder/Redmine-Chatbot.git
+
+```
+### Quick start
+To start the chatbot :
+
+Open Git Bash and change the current working directory to xatkit directory and type :
+
+```html
+    cd bin/
+
+    ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
+```
+Open your browser and navigate to http://localhost:5000/admin to test it
+
+[Back To The Top](#Redmine-Chatbot)
+
+---
+#### Authors information
+Done by 
+
+[DERROUICH Jaouhar ](https://www.facebook.com/jaouharderrouich/)
+
+and
+
+[Outtaleb Mohamed ](https://www.facebook.com/mohamed.naya/)
+
+Under supervision of 
+
+ EL HAMLAOUI Mahmoud
+ 
+[Back To The Top](#Redmine-Chatbot)
+
+___
