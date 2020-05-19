@@ -12,33 +12,33 @@
 
 ## Description
 
-This chatbot is made using Xatkit bot platform, in this chatbot we can interact with redmine project management using there java based API 
+This chatbot is made using Xatkit bot platform, in this chatbot we can interact with [redmine project management](https://www.redmine.org/) using there java based API 
 here's exemples of what she can do :
 
 1.Creating an account or login using API ACCESS KEY
 
-2.View all or spicific users (requires admin privilege)
+2.View all or specific users (requires admin privileges)
 + To view all of them || *view all users*
-+ To view details about an issue || *show* HisFirstName HisLastName *details*
++ To view details about a user || *show* HisFirstName HisLastName *details*
 
-3.Create new projects (requires admin privilege)
+3.Create new projects (requires admin privileges)
 + *create project*
 
-4.View all or spicific projects
+4.View all or specific projects
 + To view all of them || *show all projects*
 + To view details about a projet || *show project* ProjectName
 
 5.Update an existing project(If user is an admin)
 + *I want to update a project*
 
-6.Create new issues (requires admin privilege)
+6.Create new issues (requires admin privileges)
 + *create* IssueName * in project* ProjectName
 
-7.View all or spicific issues
+7.View all or specific issues
 + To view all of them || *show all* ProjectName *issues*
 + To view details about an issue || *show issue id = * IssueID *details*
 
-8.Update an existing issue (requires admin privilege)
+8.Update an existing issue (requires admin privileges)
 + *On issue id=* IssueID *update* WhatToUpdate *:* UpdatedValue
 + WhatToUpdate can be *privacy*, *estimated_hours*, *tracker*, *tracker* or *priority*
 
@@ -57,7 +57,7 @@ here's exemples of what she can do :
 ### Quick start
 To start the chatbot :
 
-Open Git Bash and change the current working directory to xatkit directory and type :
+Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
 ```html
     cd bin/
