@@ -228,9 +228,9 @@ intent Exit{
 
 intent Stop{
 	inputs{
-		"Stop"
+	    "Stop"
 	    "stop"
-	    "i am done here"
+	    "I'm done here"
 	    "stop here"
 	}
 }
