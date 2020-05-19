@@ -52,7 +52,7 @@ here's examples of what she can do :
 ### How to install
 
 + Download or clone this repository 
-+ Cut and paste or extract Redmine-Chatbot-master **folder COMPONANTS** (examples, bin and plugins) in ```*xatkit-directory*/build``` (allow to replace) 
++ Cut and paste or extract Redmine-Chatbot-master **folder COMPONANTS** (examples, bin and plugins) in ```xatkit-directory/build``` (allow to replace) 
 
 ### Quick start
 To start the chatbot :
@@ -60,7 +60,7 @@ To start the chatbot :
 
 Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
-```git
+```linux
     cd bin/
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
