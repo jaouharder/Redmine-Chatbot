@@ -1,0 +1,329 @@
+Library GreetingsBotLibrary
+
+intent Welcome {
+	inputs {
+		"Hi"
+		"hi"
+		"Hello"
+		"hello"
+		"Hey"
+		"Good morning"
+		"Morning"
+		"Good afternoon"
+		"Greetings"
+	}
+}
+
+intent Url{
+	inputs{
+		"URL"
+	}
+	creates context Login {
+		sets parameter LoginURL from fragment "URL" (entity url)
+	}
+}
+intent APIACCESSKEY{
+	inputs{
+		"pike"
+		"my api key is pike"
+	}
+	creates context Login {
+		sets parameter LoginAPIKEY from fragment "pike" (entity any) 
+	}
+}
+intent Retryapikey{
+	inputs{
+		"Retry api access key"
+		"retry api access key"
+	}
+}
+
+intent WhatsUp {
+	inputs {
+		"How are you?"
+		"how are you ?"
+		"how are you "
+		"how are you?"
+		"how r u?"
+		"what's up?"
+		"how do you feel?"
+	}
+}
+
+intent Fine {
+	inputs {
+		"I am fine"
+		"Fine"
+		"fine"
+	}
+}
+
+intent Sad {
+	inputs {
+		"Not so good"
+		"I am sad"
+		"Sad"
+	}
+}
+intent ViewIssues {
+	inputs {
+		"show all Projec issues"
+		"view all Projec issues"
+		"view all issues of Projec"
+		"show all issues of Projec"
+		"Show all Projec issues"
+		"View all Projec issues"
+		"View all issues of Projec"
+		"Show all issues of Projec"
+		
+	}
+	creates context Project{
+		sets parameter ProjectName from fragment"Projec"(entity any)
+		}
+}
+intent CreateIssues {
+	inputs {
+		"create issue CIssue in project PROJET"
+		"create issue in project PROJET using name CIssue"
+		"add issue in project PROJET using name CIssue"
+		"add issue CIssue in project PROJET"
+		"Create issue CIssue in project PROJET"
+		"Create issue in project PROJET using name CIssue"
+		"Add issue in project PROJET using name CIssue"
+		"Add issue CIssue in project PROJET"
+		
+		}
+	creates context IssueName {
+		sets parameter IName from fragment "CIssue" (entity any)
+		sets parameter PName from fragment "PROJET" (entity any)
+	}
+}
+intent UpdateIssue {
+	inputs{
+		"On issue id= IssueID update SOMETHING : UPDATED"
+		"on issue id= IssueID update SOMETHING : UPDATED"
+		"On issue IssueID update SOMETHING : UPDATED"
+		}
+	creates context UpdateIssue {
+	 	sets parameter IssueID from fragment "IssueID" (entity any)
+		sets parameter WhatToUP from fragment "SOMETHING" (entity any)
+		sets parameter UpToDate from fragment "UPDATED" (entity any)
+	}
+}
+intent GetIssueDetails {
+	inputs{
+		"Get issue id = IssueID details"
+		"get issue id = IssueID details"
+		"Get issue id = IssueID"
+		"Get issue IssueID details"
+		"Get issue id = IssueID details"
+		"View issue id = IssueID details"
+		"view issue id = IssueID details"
+		"View issue id = IssueID"
+		"View issue IssueID details"
+		"View issue id = IssueID details"
+		"Show issue id = IssueID details"
+		"show issue id = IssueID details"
+		"Show issue id = IssueID"
+		"Show issue IssueID details"
+		"Show issue id = IssueID details"
+	}
+	creates context IssueDet{
+		sets parameter IssuID from fragment "IssueID" (entity any)
+	}
+}
+intent userDetails{
+	inputs{
+		"get fname lname details"
+		"show fname lname details"
+		"view fname lname details"
+		"Get fname lname details"
+		"Show fname lname details"
+		"View fname lname details"
+	}
+	creates context details{
+		sets parameter Fname from fragment "fname"(entity any)
+		sets parameter Lname from fragment "lname"(entity any)
+	}
+}
+
+intent Vusers {
+	inputs{
+		"view all users"
+		"show all users"
+		"get all users"
+		"View all users"
+		"Show all users"
+		"Get all users"
+	}	
+}
+intent CreateUser {
+	inputs{
+		"create new account"
+		"create new user"
+	}
+}
+intent GetFullName{
+	inputs{
+	"myfname mylname"
+	}
+	creates context funame{
+		sets parameter myFname from fragment "myfname" (entity any)
+		sets parameter myLname from fragment "mylname" (entity any)
+	}
+}
+intent GetMail{
+	inputs{
+		"input"
+		
+		}
+	creates context gmail{
+		sets parameter mymail from fragment "input" (entity any)
+	}
+}
+intent GetLogin{
+	inputs{
+		"OneWord"
+		
+	}
+	creates context log{
+		sets parameter logi from fragment "OneWord" (entity any)
+}
+}
+intent retryGetMail{
+	inputs{
+		"retry email"
+		"retry mail"
+	}
+}
+intent retryGetLogin{
+	inputs{
+		"retry login"
+	}
+}
+
+intent GetPass{
+	inputs{
+		"One"
+		}
+	creates context gpass{
+	   sets parameter gpasss from fragment "One" (entity any)
+	}
+}
+intent exite{
+	inputs{
+		"exit"
+		"Exit"
+	}
+}
+
+intent Exit{
+	inputs{
+		"exit"
+		"Exit"
+	}
+}
+
+
+
+intent Stop{
+	inputs{
+		"Stop"
+	    "stop"
+	    "i am done here"
+	    "stop here"
+	}
+}
+
+
+intent View_proj{
+	inputs {
+	   "show all projects"
+	   "show all my projects"
+	   "view projects"
+	}
+}
+
+intent details_project{
+	inputs{
+		"show project proj_name"
+		"show me a project proj_name"
+	}
+	
+	creates context nom {
+		sets parameter projetnom from fragment proj_name (entity any)}
+}
+
+
+
+
+
+
+intent Create{
+	inputs{
+		"create project"
+	    "create a project"
+	    "create a single project"
+	    "i want to create a project"
+	  }
+	
+}
+
+intent Name {
+	inputs
+	{
+		"projname"
+	}
+ 	creates context name {
+		sets parameter projnames from fragment projname (entity any)}
+}
+intent Specification{
+	inputs{
+		
+		"i want to update a project"
+		"update"
+		"i want update"
+		
+	}
+	
+	
+	
+}
+
+
+intent Specification2{
+	inputs{
+		
+		"home_page"
+		"project_type"
+		"inheritmembers"
+		}
+	
+}
+
+intent Specification3 {
+	inputs{
+		
+		"project_name project's type is public_private"
+		"project_name home page:home_page"
+		"project_name enable_disable inheritmembers"
+		 
+	}
+
+
+    creates context type {
+		sets parameter ptype from fragment public_private (entity any)}
+
+    creates context homep {
+		sets parameter homepage from fragment home_page (entity any)}
+	
+	creates context heritage {
+		sets parameter pheritage from fragment enable_disable (entity any)}	
+
+    creates context nprojet {
+		sets parameter pnprojet from fragment project_name (entity any)}	
+   
+}
+
+
+
