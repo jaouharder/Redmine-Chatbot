@@ -19,27 +19,27 @@ here's examples of what she can do :
 
 2.View all or specific users (requires admin privileges)
 + To view all of them type *view all users*
-+ To view details about a user type *show* HisFirstName HisLastName *details*
++ To view details about a user type *show* **HisFirstName HisLastName** *details*
 
 3.Create new projects (requires admin privileges)
 + type *create project*
 
 4.View all or specific projects
 + To view all of them type *show all projects*
-+ To view details about a projet type *show project* ProjectName
++ To view details about a projet type *show project* **ProjectName**
 
 5.Update an existing project(If user is an admin)
 + type *I want to update a project*
 
 6.Create new issues (requires admin privileges)
-+ type *create* IssueName *in project* ProjectName
++ type *create* **IssueName** *in project* **ProjectName**
 
 7.View all or specific issues
-+ To view all of them type *show all* ProjectName *issues*
-+ To view details about an issue type *show issue id =* IssueID *details*
++ To view all of them type *show all* **ProjectName** *issues*
++ To view details about an issue type *show issue id =* **IssueID** *details*
 
 8.Update an existing issue (requires admin privileges)
-+ type *On issue id=* IssueID *update* WhatToUpdate *:* UpdatedValue
++ type *On issue id=* **IssueID** *update* **WhatToUpdate** *:* **UpdatedValue**
 + WhatToUpdate can be *privacy*, *estimated_hours*, *tracker* or *priority*
 
 ## Installation
@@ -52,11 +52,11 @@ here's examples of what she can do :
 ### How to install
 
 + Download or clone this repository 
-+ Cut and paste or extract Redmine-Chatbot-master folder COMPONANTS (examples, bin and plugins) in *xatkit-directory*/build (allow to replace) 
++ Cut and paste or extract Redmine-Chatbot-master **folder COMPONANTS** (examples, bin and plugins) in ```*xatkit-directory*/build``` (allow to replace) 
 
 ### Quick start
 To start the chatbot :
-##### for windows 
+***for windows 
 
 Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
@@ -65,7 +65,7 @@ Open Git Bash as administrator and change the current working directory to xatki
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
 ```
-##### for Ubuntu
+***for Ubuntu
 
 Navigate to ```xatkit/build``` directory and type :
 
