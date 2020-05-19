@@ -261,10 +261,10 @@ intent details_project{
 
 intent Create{
 	inputs{
-		"create project"
+	    "create project"
 	    "create a project"
 	    "create a single project"
-	    "i want to create a project"
+	    "I want to create a project"
 	  }
 	
 }
@@ -280,9 +280,9 @@ intent Name {
 intent Specification{
 	inputs{
 		
-		"i want to update a project"
+		"I want to update a project"
 		"update"
-		"i want update"
+		"update project"
 		
 	}
 	
