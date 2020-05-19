@@ -167,7 +167,7 @@ HandleSad {
 
 HandleHelp {
 	Body {
-		ChatPlatform.Reply("help me to!!")}
+		ChatPlatform.Reply("Go to our [Github repository](https://github.com/jaouharder/Redmine-Chatbot/blob/master/README.md) to view commands examples ")}
 	Next {
 		_ --> Init
 	}
