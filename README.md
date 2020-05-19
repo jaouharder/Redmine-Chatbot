@@ -14,6 +14,7 @@
 
 This chatbot is made using Xatkit bot platform, in this chatbot we can interact with redmine project management using there java based API 
 here's exemples of what she can do :
+
 1.Creating an account or login using API ACCESS KEY
 
 2.View all or spicific users (requires admin privilege)
