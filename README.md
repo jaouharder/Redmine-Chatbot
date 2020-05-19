@@ -56,6 +56,7 @@ here's examples of what she can do :
 
 ### Quick start
 To start the chatbot :
+##### for windows 
 
 Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
@@ -64,6 +65,17 @@ Open Git Bash as administrator and change the current working directory to xatki
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
 ```
+##### for Ubuntu
+
+Navigate to ```html xatkit/build``` directory and type :
+
+```html
+    cd bin/
+
+    ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
+```
+
+
 Open your browser and navigate to http://localhost:5000/admin to test it
 
 [Back To The Top](#Redmine-Chatbot)
