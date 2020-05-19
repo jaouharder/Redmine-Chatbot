@@ -60,16 +60,16 @@ To start the chatbot :
 
 Open Git Bash as administrator and change the current working directory to xatkit directory and type :
 
-```html
+```git
     cd bin/
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
 ```
 ##### for Ubuntu
 
-Navigate to ```html xatkit/build``` directory and type :
+Navigate to ```xatkit/build``` directory and type :
 
-```html
+```git
     cd bin/
 
     ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
