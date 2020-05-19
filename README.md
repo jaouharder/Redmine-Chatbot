@@ -32,11 +32,11 @@ here's exemples of what she can do :
 + *I want to update a project*
 
 6.Create new issues (requires admin privileges)
-+ *create* IssueName * in project* ProjectName
++ *create* IssueName *in project* ProjectName
 
 7.View all or specific issues
 + To view all of them || *show all* ProjectName *issues*
-+ To view details about an issue || *show issue id = * IssueID *details*
++ To view details about an issue || *show issue id =* IssueID *details*
 
 8.Update an existing issue (requires admin privileges)
 + *On issue id=* IssueID *update* WhatToUpdate *:* UpdatedValue
