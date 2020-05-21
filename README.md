@@ -1,4 +1,5 @@
-# Redmine Chatbot
+
+![redchatlogo2](https://user-images.githubusercontent.com/58748867/82519266-c976a780-9b10-11ea-8bb6-c25d4aaed1a4.png)
 
 ### Table of Contents
  
