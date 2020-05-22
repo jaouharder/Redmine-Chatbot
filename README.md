@@ -13,7 +13,7 @@
 
 ## Description
 
-This chatbot is made using Xatkit bot platform, in this chatbot we can interact with [redmine project management](https://www.redmine.org/) using there java based API 
+This chatbot is made using Xatkit bot platform, in this chatbot we can interact with [redmine project management](https://www.redmine.org/) using their java based API 
 here's examples of what she can do :
 
 1.Creating an account or login using API ACCESS KEY
