@@ -56,6 +56,9 @@ here's examples of what she can do :
 + Cut and paste or extract Redmine-Chatbot-master **folder COMPONANTS** (examples, bin and plugins) in ```xatkit-directory/build``` (allow to replace) 
 
 ### Quick start
+
+On Redmine go to ***Administration --> SETTINGS --> API*** and make sure that ***Enable REST web service*** is enabled
+
 To start the chatbot :
 
 ***On windows*** 
