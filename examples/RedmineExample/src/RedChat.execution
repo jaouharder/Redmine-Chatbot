@@ -1,4 +1,4 @@
-import library "GreetingsBot-Extended/src/GreetingsBot.intent" as GreetingsBotLib
+import library "RedmineExample/src/RedChat.intent" as GreetingsBotLib
 import library "CoreLibrary"
 import platform "ChatPlatform"
 
@@ -38,7 +38,7 @@ HandleUrl{
 		com.taskadapter.redmineapi.AllAboutProject.uri=uri
 		ChatPlatform.Reply("Done! now give me your API access key")
 		ChatPlatform.Reply("Or type *create new account*")
-		com.taskadapter.redmineapi.AllAboutProject.bool==true
+		com.taskadapter.redmineapi.AllAboutProject.bool=true
 	}
 	Next{
 		intent == CreateUser --> HandleCreateUser
