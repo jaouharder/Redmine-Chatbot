@@ -43,6 +43,14 @@ here's examples of what she can do :
 + type *On issue id=* **IssueID** *update* **WhatToUpdate** *:* **UpdatedValue**
 + WhatToUpdate can be *privacy*, *estimated_hours*, *tracker* or *priority*
 
+9.Create new group and add users to it (requires admin privileges)
++ To create group type *Create group using name* **GroupName**
++ To add users type *on group* **GroupID** *add user* **UserID**
++ To show all groups type *show all groups*
+
+10.Assign group or user to project (requires admin privileges)
++type *I want* **USERID/GROUPID** *to work in project* **ProjectName**
+
 ## Installation
 
 ### Requirements
