@@ -10,18 +10,20 @@ Init {
 		intent == Create && com.taskadapter.redmineapi.AllAboutProject.bool==true -->HandleCreate
 		intent == Vusers && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVusers
 		intent == WhatsUp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleWhatsUp
-		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj 
+		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj
+		intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign
 		intent == ViewIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVissues
+		intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
 		intent == UpdateIssue && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleUpdateIssue
 		intent == userDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleuserDetails
+		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
 		intent == CreateIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateIssues
+		intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
 		intent == Specification && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSpecification	
 		intent == details_project && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_details		
 		intent == GetIssueDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleGetIssueDetails
-		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
-	    intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
-	    intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign	
-	    intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
+	        	
+	        
 	}
 }
 HandleWelcome {
