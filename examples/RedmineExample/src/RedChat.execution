@@ -624,8 +624,14 @@ Default_Fallback {
 	    	}
 	    	if(reply.contains("done") && reply.contains("ratio")){
 	    		ChatPlatform.Reply("you have to use this pattern :")
-	    	    ChatPlatform.Reply("On issue id= *IssueID* update DoneRatio : *ValueOfDoneRatioFromOneToHandred*")
+	    	        ChatPlatform.Reply("On issue id= *IssueID* update DoneRatio : *ValueOfDoneRatioFromOneToHandred*")
 	    	}
+		}
+		else if(reply.contains("assign") && (reply.contains("group") || reply.contains("user"))){
+		        ChatPlatform.Reply("I guess you want to assign user or group to a project ")
+			ChatPlatform.Reply("You can use this pattern")
+			ChatPlatform.Reply("I want *USERID/GROUPID* to work in project *ProjectName*")
+		
 		}
 		else ChatPlatform.Reply("Sorry I didn't get it,type *help* if you want to get examples of commands")
 	}
