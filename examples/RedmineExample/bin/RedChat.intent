@@ -103,6 +103,7 @@ intent UpdateIssue {
 		"On issue id= IssueID update SOMETHING : UPDATED"
 		"on issue id= IssueID update SOMETHING : UPDATED"
 		"On issue IssueID update SOMETHING : UPDATED"
+		"on issue IssueID update SOMETHING : UPDATED"
 		}
 	creates context UpdateIssue {
 	 	sets parameter IssueID from fragment "IssueID" (entity any)
@@ -324,6 +325,47 @@ intent Specification3 {
 		sets parameter pnprojet from fragment project_name (entity any)}	
    
 }
-
-
-
+intent CreateGroup{
+	inputs{
+	"Create group using name GName"
+	"create group using name GName"
+	"Create group GName"
+	"create group GName"
+	}
+	creates context grp {
+		sets parameter gname from fragment "GName" (entity any)
+	}
+}
+intent AddUsToGrp{
+	inputs{
+		"on group GrpID add user with id = UsID"
+		"on group GrpID add user UsID"
+		"on group with id = GrpID add user with id = UsID"
+		"On group GrpID add user with id = UsID"
+	}
+	creates context grp {
+		sets parameter grpname from fragment "GrpID" (entity any)
+		sets parameter usid from fragment "UsID" (entity any)
+	}
+}
+intent SetAssign{
+	inputs{
+		"I want USER/GROUPID to work in project ISSID"
+		"I want user USER/GROUPID to work in project ISSID"
+		"I want group USER/GROUPID to work in project ISSID"
+		"make USER/GROUPID work in project ISSID"
+		"add user USER/GROUPID to work in project ISSID"
+		"add group USER/GROUPID to work in project ISSID"
+	}
+	creates context assignee {
+		sets parameter usgrid from fragment "USER/GROUPID" (entity any)
+		sets parameter issid from fragment "ISSID" (entity any)
+	}
+}
+intent ShowAllGroups{
+	inputs{
+		"show all groups"
+		"get all groups"
+		"view all groups"
+	}
+}

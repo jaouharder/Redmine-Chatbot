@@ -1,4 +1,4 @@
-import library "GreetingsBot-Extended/src/GreetingsBot.intent" as GreetingsBotLib
+import library "RedmineExample/src/RedChat.intent" as GreetingsBotLib
 import library "CoreLibrary"
 import platform "ChatPlatform"
 
@@ -7,24 +7,28 @@ Init {
 	Next {
 		intent == Help --> HandleHelp
 		intent == Welcome --> HandleWelcome
-		intent == Create &&com.taskadapter.redmineapi.AllAboutProject.bool==true -->HandleCreate
-		intent == Vusers &&com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVusers
-		intent == WhatsUp &&com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleWhatsUp
-		intent == View_proj &&com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj 
-		intent == ViewIssues &&com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVissues
-		intent == UpdateIssue &&com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleUpdateIssue
-		intent == userDetails &&com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleuserDetails
-		intent == CreateIssues &&com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateIssues
-		intent == Specification &&com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSpecification	
-		intent == details_project &&com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_details		
-		intent == GetIssueDetails &&com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleGetIssueDetails
-		
+		intent == Create && com.taskadapter.redmineapi.AllAboutProject.bool==true -->HandleCreate
+		intent == Vusers && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVusers
+		intent == WhatsUp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleWhatsUp
+		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj 
+		intent == ViewIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVissues
+		intent == UpdateIssue && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleUpdateIssue
+		intent == userDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleuserDetails
+		intent == CreateIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateIssues
+		intent == Specification && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSpecification	
+		intent == details_project && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_details		
+		intent == GetIssueDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleGetIssueDetails
+		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
+	    intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
+	    intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign	
+	    intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
 	}
 }
 HandleWelcome {
 	Body {
 		ChatPlatform.Reply("Hi, nice to meet you Redminer!")
 		ChatPlatform.Reply("Can you give us your Redmine URL to work with ? don't forget the *http(s)://*")
+		com.taskadapter.redmineapi.AllAboutProject.bool=true
 		
 	}
 	Next {
@@ -38,7 +42,7 @@ HandleUrl{
 		com.taskadapter.redmineapi.AllAboutProject.uri=uri
 		ChatPlatform.Reply("Done! now give me your API access key")
 		ChatPlatform.Reply("Or type *create new account*")
-		com.taskadapter.redmineapi.AllAboutProject.bool==true
+		
 	}
 	Next{
 		intent == CreateUser --> HandleCreateUser
@@ -51,6 +55,7 @@ HandleUrl{
 
 HandleApiaccesskey{
 	Body{
+
 		val apiaccesskey=context.get("Login").get("LoginAPIKEY") as String 
 		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=apiaccesskey
 		val reply=com.taskadapter.redmineapi.AllAboutUsers.GetUserName(apiaccesskey) as String
@@ -60,7 +65,7 @@ HandleApiaccesskey{
 			 ChatPlatform.Reply(reply)
 			 ChatPlatform.Reply("type *Retry api access key* and re-enter api access key")}
 		else ChatPlatform.Reply(reply+" re-enter *hello* to renew URL")	 
-	
+		com.taskadapter.redmineapi.AllAboutProject.bool==true
 	}
 	Next{
 	    
@@ -106,8 +111,8 @@ HandleGetMail{
 }
 HandleGetLogin{
 	Body{
-		val login= intent.getMatchedInput() as String
-		com.taskadapter.redmineapi.AllAboutUsers.login=login
+		val lgn= intent.getMatchedInput() as String
+		com.taskadapter.redmineapi.AllAboutUsers.login=lgn
 		ChatPlatform.Reply("Give me your password ")
 	}
 	Next{
@@ -123,7 +128,7 @@ HandleCreation{
 		val pass= intent.getMatchedInput() as String
 		val reply=com.taskadapter.redmineapi.AllAboutUsers.CreateUser(pass)as String
 		ChatPlatform.Reply(reply)
-		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=com.taskadapter.redmineapi.AllAboutUsers.GetApiKey(pass) as String
+		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=com.taskadapter.redmineapi.AllAboutUsers.GetApiKey(pass)
 		}
 	Next{
 		intent == Exit -->HandleExit
@@ -135,7 +140,6 @@ HandleCreation{
 }
 HandleWhatsUp {
 	Body {
-		
 		ChatPlatform.Reply("I am fine and you?")
 	}
 	Next {
@@ -168,29 +172,10 @@ HandleSad {
 
 HandleHelp {
 	Body {
-		ChatPlatform.Reply("help me to!!")}
+		ChatPlatform.Reply("Go to our [Github repository](https://github.com/jaouharder/Redmine-Chatbot/blob/master/README.md) to view commands examples ")}
 	Next {
 		_ --> Init
 	}
-}
-
-HandleView_details{
-	
-	Body{  
-		   val tmp_nom=context.get("nom").get("projetnom") as String
-           val project=com.taskadapter.redmineapi.AllAboutProject.view_details_project(tmp_nom) as String
-           if(project.contains("Not found"))
-             ChatPlatform.Reply("this project does not exist")
-           else  
-           ChatPlatform.Reply(project)	
-	}
-	Next{
-		_ --> Init 
-	}
-
-
-
-
 }
 
 HandleCreate {
@@ -354,8 +339,6 @@ HandleCreateIssues {
 		intent == exite --> Handleexite
 	}
 	Fallback{
-		val apiaccesskey=context.get("Login").get("LoginAPIKEY") as String 
-		val uri=context.get("Login").get("LoginURL") as String
 		val UpdatedValue=intent.getMatchedInput() as String
 		val issueID=com.taskadapter.redmineapi.AllAboutIssues.MyNewIssueID as String
 		var retries = session.get("botsize.fallback") as Integer ?: 0
@@ -368,14 +351,13 @@ HandleCreateIssues {
 		} 
 		else if(retries==2){
 			ChatPlatform.Reply("type *Exit*")}
-		else ChatPlatform.Reply("STOP weasting my time type *Exit* or if you are too lazy copy and paste it :)")	
+		else ChatPlatform.Reply("STOP wasting my time type *Exit* or if you are too lazy copy and paste it :)")	
 	}
 
 }
 HandleView_proj {
 	
 	Body {
-		val uri=context.get("Login").get("LoginURL") as String
 		com.taskadapter.redmineapi.AllAboutProject.get_project()
 	    ChatPlatform.Reply("Here are the names of all your projects :")
         val i=0 as Integer
@@ -385,7 +367,7 @@ HandleView_proj {
 	
 	             ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutProject.proj_name.get(i) as String)
          	     }
-                 ChatPlatform.Reply("If you want to check your projects in redmine [click here]("+uri+"/projects)")	     
+                 ChatPlatform.Reply("If you want to check your projects in redmine [click here]("+com.taskadapter.redmineapi.AllAboutProject.uri+"/projects)")	     
 	 
 	}
 	Next {
@@ -397,7 +379,7 @@ Handleexite{
 	Body{
 		ChatPlatform.Reply("you can update your issue to define Tracker, Priority, Privacy, Done Ratio or Estimatedtime ")
 		ChatPlatform.Reply("you have to use this pattern :")
-		ChatPlatform.Reply("On issue id= *IssueID* update *WhatToApdate* : *UpdatedValue*")
+		ChatPlatform.Reply("On issue *IssueID* update *WhatToApdate* : *UpdatedValue*")
 		ChatPlatform.Reply("if you don't know IssueID you can find it bye showing all issues")
 	}
 	Next{
@@ -456,6 +438,35 @@ HandleVusers{
     }
 }
 
+HandleView_details{
+	
+	Body{  
+		   
+		   val tmp_nom=context.get("nom").get("projetnom") as String
+           val project=com.taskadapter.redmineapi.AllAboutProject.view_details_project(tmp_nom) as String
+           com.taskadapter.redmineapi.AllAboutUsers.ShowMembers(tmp_nom)
+           
+           if(project.contains("Not found"))
+             ChatPlatform.Reply("This project does not exist")
+           else  {
+             var i = 0 as Integer
+             val size=com.taskadapter.redmineapi.AllAboutUsers.MemberList.size() as Integer
+             ChatPlatform.Reply(project)
+             ChatPlatform.Reply("Members :")
+              for (i=0;i<size;i++){
+		        ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.MemberList.get(i) as String)}
+		    }
+      	
+	}
+	Next{
+		_ --> Init 
+	}
+
+
+
+
+}
+
 HandleVissues {
 	Body {
 		val project =context.get("Project").get("ProjectName") as String
@@ -472,7 +483,7 @@ HandleVissues {
 		        }
 		    }
 		else{
-			if(nerror.contains("Server returned '404 not found'"))
+			if(nerror.contains("Server returned '404 not found"))
 			ChatPlatform.Reply("Project does not exist please verify again")
 			else{
 		 	ChatPlatform.Reply("Server does not respond re-enter hello to modify url and api access key")
@@ -483,23 +494,118 @@ HandleVissues {
 	}
 
 }
+HandleCreateGroupe{
+	Body{
+		val gname=context.get("grp").get("gname") as String
+		ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.CreateGrp(gname))
+	}
+	Next{
+		_--> Init
+	}
+	
+}
+HandleAddUsToGrp{
+	Body{
+		val usid=context.get("grp").get("usid") as String
+		val grpname=context.get("grp").get("grpname") as String
+		ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.AddUserToGrp(usid,grpname))
+	}
+    Next{
+		_--> Init
+	}
+}
+HandleSetAssign{
+	Body{
+
+		ChatPlatform.Reply("Give the role(s) of this user/group (Manager/Developer/Reporter)")
+
+		}
+	Next{
+		intent == Exit -->HandleExit	
+    }
+    Fallback{
+		val reply=intent.getMatchedInput() as String
+	    if(reply.toLowerCase().contains("developer") || reply.toLowerCase().contains("manager") || reply.toLowerCase().contains("reporter")){
+		val userid=context.get("assignee").get("usgrid") as String
+		val issid=context.get("assignee").get("issid") as String
+		ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.addAssignee(reply,issid,userid))
+		}
+		else{ ChatPlatform.Reply("You've entred invalid roles !! user/group is not assigned re-enter valid ones or type *exit*")}
+	    ChatPlatform.Reply("Type *exit*")
+	}
+}
+
+HandleShowAllGroups{
+	Body{
+		com.taskadapter.redmineapi.AllAboutUsers.Viewgrps()
+	    val size=com.taskadapter.redmineapi.AllAboutUsers.GroupList.size() as Integer
+	    var i = 0 as Integer
+	    for (i=0;i<size;i++){
+	      ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.GroupList.get(i) as String)
+		        }
+	}
+    Next{
+		_--> Init
+	}	
+}
 
 
 Default_Fallback {
 	Body {
-		if(com.taskadapter.redmineapi.AllAboutProject.bool==true){	
+		if(com.taskadapter.redmineapi.AllAboutProject.bool==true){
 		val reply=intent.getMatchedInput().toLowerCase() as String
-		if(reply.contains("create")&&reply.contains("project")){
-	     ChatPlatform.Reply("Perhaps you want to create a project .....")
-	     ChatPlatform.Reply("If so follow the pattern")
-	     ChatPlatform.Reply("create project")}
-	    else if((reply.contains("show")||reply.contains("view"))&&reply.contains("project")){
-	      ChatPlatform.Reply("Perhaps you want to show a project.....")
-	      ChatPlatform.Reply("to execute your action follow the pattern to show all projects")
-	      ChatPlatform.Reply("show all projects")
-	      ChatPlatform.Reply("to execute your action follow the pattern to show a specific one")
-	      ChatPlatform.Reply("show project proj_name")
-	    } 
+		
+		
+		if(reply.contains("create") || reply.contains("add")){
+			
+			if(reply.contains("project")){
+	           ChatPlatform.Reply("Perhaps you want to create a project .....")
+	           ChatPlatform.Reply("If so follow the pattern")
+	           ChatPlatform.Reply("create project")}
+	        
+	        else if(reply.contains("issue")){
+	           ChatPlatform.Reply("I guess you want to create an issue use this pattern : ")
+			   ChatPlatform.Reply("create issue *giveIssueName* in project *giveProjectName*")
+	        }
+	        
+	        else if(reply.contains("group")) {
+	           ChatPlatform.Reply("I guess you want to create a group use this pattern : ")
+	           ChatPlatform.Reply("Create group using name *GroupName*")
+	        }}
+	         
+	         
+	    else if((reply.contains("show") ||reply.contains("view") || reply.contains("get")){
+	    	
+	      if(reply.contains("project")){
+            ChatPlatform.Reply("Perhaps you want to show a project.....")
+	        ChatPlatform.Reply("to execute your action follow the pattern to show all projects")
+            ChatPlatform.Reply("show all projects")
+            ChatPlatform.Reply("to execute your action follow the pattern to show a specific one")
+	        ChatPlatform.Reply("show project proj_name")
+	      }
+	      else if(reply.contains("issue")){
+	      	ChatPlatform.Reply("I guess you want to view an issue(s)")
+			ChatPlatform.Reply("if you want to view all project issues or specific one")
+			ChatPlatform.Reply("you can to use this patterns :")
+			ChatPlatform.Reply("View issue id = *IssueID* details")
+			ChatPlatform.Reply("if you don't know IssueID you can find it bye showing all issues using this pattern :")
+			ChatPlatform.Reply("show all *giveProjectName* issues")
+	      }
+	      else if(reply.contains("user")){
+	      	ChatPlatform.Reply("I guess you want to view a user")
+			ChatPlatform.Reply("if you want to view all users")
+			ChatPlatform.Reply("you can to use this pattern :")
+			ChatPlatform.Reply("View all users")
+			ChatPlatform.Reply("if you want to view details of specific user :")
+			ChatPlatform.Reply("Get *userFirstName* *userLastName* details")
+	      }
+	      else if(reply.contains("group")){
+	      	ChatPlatform.Reply("I guess you want to view groups")
+	      	ChatPlatform.Reply("you can to use this command :")
+	      	ChatPlatform.Reply("*show all groups*")
+	      }}
+	      
+	      
 	    else if(reply.contains("update") && reply.contains("project")){
 	    	ChatPlatform.Reply("Perhaps you want to update a project.....")
 	        ChatPlatform.Reply("to  execute your action follow the pattern to update")
@@ -520,27 +626,6 @@ Default_Fallback {
 	    		ChatPlatform.Reply("you have to use this pattern :")
 	    	    ChatPlatform.Reply("On issue id= *IssueID* update DoneRatio : *ValueOfDoneRatioFromOneToHandred*")
 	    	}
-		}
-		else if((reply.contains("show") || reply.contains("get") || reply.contains("view")) && (  reply.contains("issue")))
-		{   ChatPlatform.Reply("I guess you want to view an issue(s)")
-			ChatPlatform.Reply("if you want to view all project issues or specific one")
-			ChatPlatform.Reply("you can to use this patterns :")
-			ChatPlatform.Reply("View issue id = *IssueID* details")
-			ChatPlatform.Reply("if you don't know IssueID you can find it bye showing all issues using this pattern :")
-			ChatPlatform.Reply("show all *giveProjectName* issues")
-		}
-		else if((reply.contains("create") || reply.contains("add")) && reply.contains("issue")){
-			ChatPlatform.Reply("I guess you want to create an issue use this pattern : ")
-			ChatPlatform.Reply("create issue *giveIssueName* in project *giveProjectName*")
-		}
-		else if((reply.contains("show") || reply.contains("get") || reply.contains("view")) && (reply.contains("user"))){
-			ChatPlatform.Reply("I guess you want to view a user")
-			ChatPlatform.Reply("if you want to view all users")
-			ChatPlatform.Reply("you can to use this pattern :")
-			ChatPlatform.Reply("View all users")
-			ChatPlatform.Reply("if you want to view details of specific user :")
-			ChatPlatform.Reply("Get *userFirstName* *userLastName* details")
-		
 		}
 		else ChatPlatform.Reply("Sorry I didn't get it,type *help* if you want to get examples of commands")
 	}
