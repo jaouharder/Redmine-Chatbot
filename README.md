@@ -40,7 +40,7 @@ here's examples of what she can do :
 + To view details about an issue type *show issue id =* **IssueID** *details*
 
 8.Update an existing issue (requires admin privileges)
-+ type *On issue id=* **IssueID** *update* **WhatToUpdate** *:* **UpdatedValue**
++ Type *On issue id=* **IssueID** *update* **WhatToUpdate** *:* **UpdatedValue**
 + WhatToUpdate can be *privacy*, *estimated_hours*, *tracker* or *priority*
 
 9.Create new group and add users to it (requires admin privileges)
@@ -49,7 +49,7 @@ here's examples of what she can do :
 + To show all groups type *show all groups*
 
 10.Assign group or user to project (requires admin privileges)
-+type *I want* **USERID/GROUPID** *to work in project* **ProjectName**
++ Type *I want* **USERID/GROUPID** *to work in project* **ProjectName**
 
 ## Installation
 
