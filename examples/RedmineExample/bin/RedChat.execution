@@ -30,6 +30,7 @@ Init {
 }
 HandleLogout{
 	Body{
+		com.taskadapter.redmineapi.AllAboutProject.bool=false
 		ChatPlatform.Reply(com.taskadapter.redmineapi.AllAboutUsers.UserLogout())
 		
 	}
@@ -51,8 +52,6 @@ HandleWelcome {
 }
 HandleUrl{
 	Body{
-		val uri=context.get("Login").get("LoginURL") as String
-		com.taskadapter.redmineapi.AllAboutProject.uri=uri
 		ChatPlatform.Reply("Done! now give me your API access key")
 		ChatPlatform.Reply("Or type *create new account*")
 		
@@ -76,17 +75,18 @@ HandleRetryapikey{
 
 HandleApiaccesskey{
 	Body{
-
+        val uri=context.get("Login").get("LoginURL") as String
 		val apiaccesskey=context.get("Login").get("LoginAPIKEY") as String 
-		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=apiaccesskey
-		val reply=com.taskadapter.redmineapi.AllAboutUsers.GetUserName(apiaccesskey) as String
+		val reply=com.taskadapter.redmineapi.AllAboutUsers.GetUserName(uri,apiaccesskey) as String
 		if(reply.contains("Welcome back")){
-		ChatPlatform.Reply(reply)}
+		ChatPlatform.Reply(reply)
+		com.taskadapter.redmineapi.AllAboutProject.uri=uri
+		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=apiaccesskey
+		}
 		else if(reply.contains("Authorization error")){
 			 ChatPlatform.Reply(reply)
 			 ChatPlatform.Reply("type *Retry api access key* and re-enter api access key")}
-		else ChatPlatform.Reply(reply+" re-enter *hello* to renew URL")	 
-		com.taskadapter.redmineapi.AllAboutProject.bool==true
+		else ChatPlatform.Reply(reply+" re-enter *hello* to renew URL")
 	}
 	Next{
 	    
