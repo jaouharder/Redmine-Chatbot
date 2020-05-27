@@ -14,13 +14,14 @@ Init {
 		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj
 		intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign
 		intent == ViewIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVissues
-		intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
+		intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp	
 		intent == UpdateIssue && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleUpdateIssue
 		intent == userDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleuserDetails
 		intent == Retryapikey && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleRetryapikey
 		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
 		intent == CreateIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateIssues
 		intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
+		intent == CreateAccount && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateAccount
 		intent == Specification && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSpecification	
 		intent == details_project && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_details		
 		intent == GetIssueDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleGetIssueDetails
@@ -28,6 +29,7 @@ Init {
 	    
 	}
 }
+
 HandleLogout{
 	Body{
 		com.taskadapter.redmineapi.AllAboutProject.bool=false
@@ -52,12 +54,9 @@ HandleWelcome {
 }
 HandleUrl{
 	Body{
-		ChatPlatform.Reply("Done! now give me your API access key")
-		ChatPlatform.Reply("Or type *create new account*")
-		
+		ChatPlatform.Reply("Done! now give me your API access key")		
 	}
 	Next{
-		intent == CreateUser --> HandleCreateUser
 		intent == APIACCESSKEY --> HandleApiaccesskey
 	}
 	Fallback{
@@ -93,69 +92,80 @@ HandleApiaccesskey{
 		_--> Init
     }
 }
-HandleCreateUser{
+HandleCreateAccount{
 	Body{
-		ChatPlatform.Reply("Give me your fullname ")
+		ChatPlatform.Reply("Give me his fullname ")
 	}
 	Next{
 		intent == GetFullName --> HandleGetFullName
+	}
+	Fallback{
+		ChatPlatform.Reply("fullname= first_name last_name in two words")
 	}
 
 }
 HandleGetFullName{
 	Body{
-		val name=intent.getMatchedInput() as String
-		com.taskadapter.redmineapi.AllAboutUsers.fname=name
-		ChatPlatform.Reply("Give me your mail ")
+		
+		//com.taskadapter.redmineapi.AllAboutUsers.fname=name
+		ChatPlatform.Reply("Give me his mail ")
 	}
 	Next{
 		intent == GetMail-->HandleGetMail
 	}
 	Fallback{
 		ChatPlatform.Reply("Email with spaces !! that's weird")
-		ChatPlatform.Reply("Give me your mail again ")
+		ChatPlatform.Reply("Give me his mail again ")
 	}
 }
 HandleGetMail{
 	Body{
-		val mail= intent.getMatchedInput() as String
-		com.taskadapter.redmineapi.AllAboutUsers.mail=mail
-		ChatPlatform.Reply("Give me your login ")
+		
+	//	com.taskadapter.redmineapi.AllAboutUsers.mail=mail
+		ChatPlatform.Reply("Give me his login ")
 	}
 	Next{
 		intent == GetLogin-->HandleGetLogin
 	}
 	Fallback{
 		ChatPlatform.Reply("Please don't use spaces")
-		ChatPlatform.Reply("Give me your login again")
+		ChatPlatform.Reply("Give me his login again")
 	}
 }
 HandleGetLogin{
 	Body{
-		val lgn= intent.getMatchedInput() as String
-		com.taskadapter.redmineapi.AllAboutUsers.login=lgn
-		ChatPlatform.Reply("Give me your password ")
+		
+		//com.taskadapter.redmineapi.AllAboutUsers.login=lgn
+		ChatPlatform.Reply("Give me his password ")
 	}
 	Next{
 		intent == GetPass-->HandleCreation
 	}
 	Fallback{
 		ChatPlatform.Reply("Please don't use spaces")
-		ChatPlatform.Reply("Give me your password again")
+		ChatPlatform.Reply("Give me his password again")
 	}
 }
 HandleCreation{
 	Body{
-		val pass= intent.getMatchedInput() as String
-		val reply=com.taskadapter.redmineapi.AllAboutUsers.CreateUser(pass)as String
+		val fname=context.get("funame").get("myFname") as String
+		val lname=context.get("funame").get("myLname") as String
+		val mail= context.get("gmail").get("mymail") as String
+		val pass= context.get("gpass").get("gpasss") as String as String
+		val lgn= context.get("log").get("logi") as String as String
+		val reply=com.taskadapter.redmineapi.AllAboutUsers.CreateUser(fname,lname,mail,lgn,pass)as String
 		ChatPlatform.Reply(reply)
-		com.taskadapter.redmineapi.AllAboutProject.apiAccessKey=com.taskadapter.redmineapi.AllAboutUsers.GetApiKey(pass)
+		if(reply.contains("Welcome to Redmine"))
+		ChatPlatform.Reply("his API key is : "+com.taskadapter.redmineapi.AllAboutUsers.GetApiKey(lgn,pass))
+		ChatPlatform.Reply("Type *exit* to finalize creation")
 		}
 	Next{
 		intent == Exit -->HandleExit
 		intent == retryGetMail -->HandleGetMail
 		intent == retryGetLogin-->HandleGetLogin
-		
+	}
+	Fallback{
+		ChatPlatform.Reply("You can't even type that correctly re-type it correctly")
 	}
 	
 }
@@ -569,7 +579,7 @@ Default_Fallback {
 		if(reply.contains("create") || reply.contains("add")){
 			
 			if(reply.contains("project")){
-	           ChatPlatform.Reply("Perhaps you want to create a project .....")
+	           ChatPlatform.Reply("Perhaps you want to create a project ....")
 	           ChatPlatform.Reply("If so follow the pattern")
 	           ChatPlatform.Reply("create project")}
 	        
@@ -581,7 +591,12 @@ Default_Fallback {
 	        else if(reply.contains("group")) {
 	           ChatPlatform.Reply("I guess you want to create a group use this pattern : ")
 	           ChatPlatform.Reply("Create group using name *GroupName*")
-	        }}
+	        }
+	        else if(reply.contains("user") || reply.contains("account")){
+	        	 ChatPlatform.Reply("I guess you want to create an account use this pattern : ")
+	        	 ChatPlatform.Reply("create new account")
+	        }
+	        }
 	         
 	         
 	    else if((reply.contains("show") ||reply.contains("view") || reply.contains("get")){

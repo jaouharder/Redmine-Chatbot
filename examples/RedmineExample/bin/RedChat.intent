@@ -161,12 +161,7 @@ intent Vusers {
 		"Get all users"
 	}	
 }
-intent CreateUser {
-	inputs{
-		"create new account"
-		"create new user"
-	}
-}
+
 intent GetFullName{
 	inputs{
 	"myfname mylname"
@@ -373,6 +368,15 @@ intent ShowAllGroups{
 		"show all groups"
 		"get all groups"
 		"view all groups"
+	}
+}
+intent CreateAccount{
+	inputs{
+		"create new account"
+		"create account"
+		"create new user"
+		"add new user"
+		"add new account"
 	}
 }
 intent Logout{
