@@ -117,16 +117,19 @@ intent GetIssueDetails {
 		"get issue id = IssueID details"
 		"Get issue id = IssueID"
 		"Get issue IssueID details"
+		"get issue IssueID details"
 		"Get issue id = IssueID details"
 		"View issue id = IssueID details"
 		"view issue id = IssueID details"
 		"View issue id = IssueID"
 		"View issue IssueID details"
+		"view issue IssueID details"
 		"View issue id = IssueID details"
 		"Show issue id = IssueID details"
 		"show issue id = IssueID details"
 		"Show issue id = IssueID"
 		"Show issue IssueID details"
+		"show issue IssueID details"
 		"Show issue id = IssueID details"
 	}
 	creates context IssueDet{
@@ -248,6 +251,8 @@ intent View_proj{
 intent details_project{
 	inputs{
 		"show project proj_name"
+		"view project proj_name details"
+		"show project proj_name details"
 		"show me a project proj_name"
 	}
 	
@@ -339,6 +344,7 @@ intent CreateGroup{
 intent AddUsToGrp{
 	inputs{
 		"on group GrpID add user with id = UsID"
+		"add user UsID to group GrpID"
 		"on group GrpID add user UsID"
 		"on group with id = GrpID add user with id = UsID"
 		"On group GrpID add user with id = UsID"
@@ -367,5 +373,13 @@ intent ShowAllGroups{
 		"show all groups"
 		"get all groups"
 		"view all groups"
+	}
+}
+intent Logout{
+	inputs{
+		"log out"
+		"logout"
+		"sign out"
+		"deconnexion"
 	}
 }
