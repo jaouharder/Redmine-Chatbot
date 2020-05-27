@@ -5,25 +5,27 @@ import platform "ChatPlatform"
 use provider ChatPlatform.ChatProvider
 Init {
 	Next {
-		intent == Help --> HandleHelp
+        intent == Help --> HandleHelp
 		intent == Welcome --> HandleWelcome
 		intent == Create && com.taskadapter.redmineapi.AllAboutProject.bool==true -->HandleCreate
 		intent == Vusers && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVusers
+		intent == Logout && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleLogout
 		intent == WhatsUp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleWhatsUp
-		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj 
+		intent == View_proj && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_proj
+		intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign
 		intent == ViewIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleVissues
+		intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
 		intent == UpdateIssue && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleUpdateIssue
 		intent == userDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleuserDetails
+		intent == Retryapikey && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleRetryapikey
+		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
 		intent == CreateIssues && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateIssues
+		intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
 		intent == Specification && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSpecification	
 		intent == details_project && com.taskadapter.redmineapi.AllAboutProject.bool==true--> HandleView_details		
 		intent == GetIssueDetails && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleGetIssueDetails
-		intent == CreateGroup && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleCreateGroupe
-	    intent == AddUsToGrp && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleAddUsToGrp
-	    intent == SetAssign && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleSetAssign	
-	    intent == ShowAllGroups && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleShowAllGroups
-	    intent == Logout && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleLogout
-	    intent == Retryapikey && com.taskadapter.redmineapi.AllAboutProject.bool==true-->  HandleRetryapikey
+		
+	    
 	}
 }
 HandleLogout{
@@ -615,7 +617,7 @@ Default_Fallback {
 	      
 	      
 	    else if(reply.contains("update") && reply.contains("project")){
-	    	ChatPlatform.Reply("Perhaps you want to update a project.....")
+	    	ChatPlatform.Reply("Perhaps you want to update a project....")
 	        ChatPlatform.Reply("to  execute your action follow the pattern to update")
 	        ChatPlatform.Reply("I want to update a project")
 	    }
@@ -630,12 +632,19 @@ Default_Fallback {
 	    		ChatPlatform.Reply("you have to use this pattern :")
 	    	    ChatPlatform.Reply("On issue id= *IssueID* update estimated_hours : *ValueOfEstimatedHours*")
 	    	    }
-	    	}
+	    	
 	    	if(reply.contains("done") && reply.contains("ratio")){
 	    		ChatPlatform.Reply("you have to use this pattern :")
 	    	    ChatPlatform.Reply("On issue id= *IssueID* update DoneRatio : *ValueOfDoneRatioFromOneToHandred*")
 	    	}
 		}
+		else if(reply.contains("assign") && (reply.contains("group") || reply.contains("user"))){
+		        ChatPlatform.Reply("I guess you want to assign user or group to a project ")
+			ChatPlatform.Reply("You can use this pattern")
+			ChatPlatform.Reply("I want *USERID/GROUPID* to work in project *ProjectName*")
+		
+		}
+		
 		else ChatPlatform.Reply("Sorry I didn't get it,type *help* if you want to get examples of commands")
 	}
 	else ChatPlatform.Reply("Why are you rude you can say hello first !! ")
