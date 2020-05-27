@@ -85,7 +85,7 @@ Navigate to ```xatkit/build``` directory and type :
 ```git
     cd bin/
 
-    ./start-xatkit-windows.sh ../examples/RedmineExample/RedChat.properties
+    ./start-xatkit-linux.sh ../examples/RedmineExample/RedChat.properties
 ```
 
 
